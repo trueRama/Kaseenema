@@ -1,0 +1,124 @@
+{
+    "short_name": "KeBERA",
+    "name": "KeBERA Organics",
+    "icons": [
+        {
+            "src": "assets/app_assets/logo192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/app_assets/logo144x144.png",
+            "type": "image/png",
+            "sizes": "144x144",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/app_assets/logo512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "assets/app_assets/logo192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "assets/app_assets/logo512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "id": "/login",
+    "start_url": "https://app.keberaorganics.com/",
+    "background_color": "#17ad37",
+    "display": "standalone",
+    "theme_color": "#17ad37",
+    "scope": "https://app.keberaorganics.com/",
+    "launch_handler": {
+        "client_mode": "focus-existing"
+    },
+    "orientation": "portrait-primary",
+    "categories": [
+        "health",
+        "lifestyle",
+        "food",
+        "social"
+    ],
+    "scope_extensions": [
+        {
+            "origin": "*.app.keberaorganics.com"
+        }
+    ],
+    "display_override": [
+        "window-control-overlay",
+        "fullscreen",
+        "standalone",
+        "window-controls-overlay"
+    ],
+    "shortcuts": [
+        {
+            "name": "/login",
+            "url": "/login",
+            "description": "user authentication",
+            "icons": [
+                {
+                    "src": "assets/app_assets/logo96x96.png",
+                    "sizes": "96x96",
+                    "type": "image/png",
+                    "purpose": "any"
+                }
+            ]
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "webapp",
+            "url": "https://myplateug.com/",
+            "id": "MyPlateug"
+        }
+    ],
+    "description": "Ecological Agriculture",
+    "lang": "en",
+    "dir": "auto",
+    "prefer_related_applications": false,
+    "iarc_rating_id": "18+",
+    "screenshots": [
+        {
+            "src": "assets/app_assets/1.png",
+            "type": "image/png",
+            "sizes": "373x812"
+        },
+        {
+            "src": "assets/app_assets/9.png",
+            "type": "image/png",
+            "sizes": "376x808"
+        },
+        {
+            "src": "assets/app_assets/12.png",
+            "type": "image/png",
+            "sizes": "373x798"
+        },
+        {
+            "src": "assets/app_assets/16.png",
+            "type": "image/png",
+            "sizes": "432x862"
+        },
+        {
+            "src": "assets/app_assets/Desktop.png",
+            "type": "image/png",
+            "sizes": "1847x883",
+            "form_factor": "wide"
+        }
+    ],
+    "share_target": {
+        "action": "/login",
+        "method": "POST",
+        "enctype": "multipart/form-data",
+        "params": {
+            "url": "https://app.keberaorganics.com/"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<?php
+declare(strict_types=1);
+ob_start();
+session_start();
+require_once('vendor/autoload.php');
+require('apis/excel_generator/php-excel-reader/excel_reader2.php');
+require('apis/excel_generator/SpreadsheetReader.php');
+include("apis/create/system_redirect.php");
+include("src/main.php");

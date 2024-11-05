@@ -1,0 +1,21 @@
+{
+  "require": {
+    "ext-curl": "*",
+    "chillerlan/php-qrcode": "^4.4.1",
+    "endroid/qrcode": "^1.9.3",
+    "ext-mysqli": "*",
+    "khanamiryan/qrcode-detector-decoder": "^2.0",
+    "ext-exif": "*",
+    "ext-gd": "*",
+    "dompdf/dompdf": "^3.0",
+    "tecnickcom/tcpdf": "^6.7",
+    "mikehaertl/phpwkhtmltopdf": "^2.5",
+    "spipu/html2pdf": "^5.2",
+    "phpoffice/phpspreadsheet": "^3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "/"
+    }
+  }
+}

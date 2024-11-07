@@ -1,5 +1,5 @@
 <div class="d-block text-center card-footer">
-    <h6 style="text-align: left;">Pages <?php echo  $number_of_pages?></h6>
+    <h6 style="text-align: left; color: white">Pages <?php echo  $number_of_pages?></h6>
     <nav class="" aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item my-text"><a href="javascript:void(0);" class="page-link" aria-label="Previous"><span aria-hidden="true">«</span></a></li>

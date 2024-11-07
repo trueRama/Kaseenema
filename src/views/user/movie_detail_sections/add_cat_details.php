@@ -36,6 +36,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--           Movie Categories             -->
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
@@ -71,6 +72,75 @@
                                 </div>
                             </div>
                         </div>
+                        <!--    End of Movie Categories                    -->
+                        <!--      Edit Movie Details                  -->
+                        <div class="col-md-12">
+                            <form action="<?php echo $pageID; ?>?movie=<?php echo $move_code; ?>"
+                                  method="post" enctype="multipart/form-data" class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title card-title-dash">Edit Movie Details</h4>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="movie_name">Movie / Media Name</label>
+                                                <input type="text" name="movie_name" id="movie_name" class="form-control" placeholder="<?php echo $movie_name; ?>">
+                                            </div>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="cover_image">Movie / Media Cover</label>
+                                                <input type="file" name="file" id="cover_image" class="form-control" accept="image/*">
+                                            </div>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="poster">Movie / Media Poster</label>
+                                                <input type="text" name="poster" id="poster" class="form-control" placeholder="<?php echo $poster; ?>">
+                                            </div>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="movie_url">Movie / Media URL</label>
+                                                <input type="text" name="movie_url" id="movie_url" class="form-control" placeholder="<?php echo $movie_url; ?>">
+                                            </div>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="trailer_url">Movie / Media Trailer URL</label>
+                                                <input type="text" name="trailer_url" id="trailer_url" class="form-control" placeholder="<?php echo $trailer_url; ?>">
+                                            </div>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="voice">Movie / Media Voice Over</label>
+                                                <input type="text" name="voice" id="voice" class="form-control" placeholder="<?php echo $voice; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="movie_type">Select Movie Type</label>
+                                                <select class="js-example-basic-single w-100 select2-hidden-accessible" id="movie_type"
+                                                        name="movie_type" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                                    <option value="movies">Movies</option>
+                                                    <option value="series">Series</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="anime_status">Select Animation Status</label>
+                                                <select class="js-example-basic-single w-100 select2-hidden-accessible" id="anime_status"
+                                                        name="anime_status" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                                    <option value="0">No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group" data-select2-id="7">
+                                                <label for="description">Movie Description</label>
+                                                <textarea class="form-control" id="description" style="height: 9.75rem;"
+                                                  rows="10" name="description" placeholder="<?php echo $voice; ?>"></textarea>
+                                            </div>
+                                            <button name="edit" class="btn btn-primary btn-sm text-white mb-0 me-0 account" type="submit">
+                                                <i class="mdi mdi-book-arrow-down"></i> Save Changes
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--    Movie Details                   -->
                     </div>
                 </div>
             </div>

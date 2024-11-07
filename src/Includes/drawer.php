@@ -61,7 +61,7 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <li class="nav-item <?php echo $movie_in; ?>">
-            <a class="nav-link" href="/movies">
+            <a class="nav-link" href="/movies?type=movies">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/icons/wallet_2.png" class="icons" alt="">
                 </i>
@@ -69,7 +69,7 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <li class="nav-item <?php echo $series_in; ?>">
-            <a class="nav-link" href="/series">
+            <a class="nav-link" href="/series?type=series">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/icons/series.gif" class="icons" alt="">
                 </i>
@@ -77,7 +77,7 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <li class="nav-item <?php echo $animation_in; ?>">
-            <a class="nav-link" href="/animations">
+            <a class="nav-link" href="/animations?type=animation_series">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/icons/anime.gif" class="icons" alt="">
                 </i>
@@ -94,7 +94,7 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <li class="nav-item <?php echo $terms_in; ?>">
-            <a class="nav-link" href="/terms">
+            <a class="nav-link" href="https://kaseenema.com/terms-conditions/">
                 <i class="menu-icon fa fa-info"></i>
                 <span class="menu-title">Terms & Conditions</span>
             </a>

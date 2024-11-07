@@ -11,6 +11,13 @@ switch ($uri) {
         }
         break;
     case '/dashboard':
+    case "/dashboard?{$query}":
+    case '/movies':
+    case "/movies?{$query}":
+    case '/series':
+    case "/series?{$query}":
+    case '/animations':
+    case "/animations?{$query}":
         loggedOutCheck();
         include_once ('src/views/dashboard.php');
         break;

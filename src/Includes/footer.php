@@ -14,12 +14,12 @@
             </span>
         <!-- comment -->
         <span class="float-none float-sm-end text-center text-white mt-sm-3 off">
-                <img src="assets/images/icons/movies.png" alt="logo"
+                <img src="assets/images/Icons/movies.png" alt="logo"
                      style="height: 30px; width: 30px;
                      object-fit: contain;
                  ">
                 Copyright © 2024. All rights reserved.
-                <img src="assets/images/icons/movies.png" alt="logo"
+                <img src="assets/images/Icons/movies.png" alt="logo"
                      style="height: 30px; width: 30px;
                      object-fit: contain;
                  ">

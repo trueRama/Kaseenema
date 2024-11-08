@@ -36,7 +36,7 @@ function loginCheck()
     }
 }
 /**  logged out check */
-function loggedOutCheck()
+function loggedOutCheck(): void
 {
     if(!isset($_SESSION['username'])){
         $message = "Your are Required to Login to Access Most Service";

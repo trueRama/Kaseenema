@@ -4,7 +4,7 @@ include_once('Includes/connect.php');
 //application serve settings
 include_once('Includes/app_config.php');
 //application constant variables
-include_once('includes/app_constants.php');
+include_once('Includes/app_constants.php');
 //application session manager
 include('apis/auth/appSession.php');
 //application UI theme and Layout

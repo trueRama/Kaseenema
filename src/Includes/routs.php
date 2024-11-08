@@ -11,6 +11,7 @@ $query = "";
 if(isset($_SERVER['REDIRECT_QUERY_STRING'])){
     $query = $_SERVER['REDIRECT_QUERY_STRING'];
 }
+
 switch ($uri) {
     /** Application View routs and calls
      *
@@ -112,5 +113,6 @@ switch ($uri) {
      */
    default:
         echo "<h1>Error 404</h1><p>Error 404 implies that the resource you requested for is not available!</p>";
+        echo $query;
         break;
 }

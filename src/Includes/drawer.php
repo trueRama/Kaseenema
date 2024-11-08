@@ -77,7 +77,7 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <li class="nav-item <?php echo $animation_in; ?>">
-            <a class="nav-link" href="/animations?type=animation_series">
+            <a class="nav-link" href="/animations?type=animation">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/Icons/anime.gif" class="icons" alt="">
                 </i>

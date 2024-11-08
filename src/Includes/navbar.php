@@ -37,7 +37,7 @@
                 <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                     <a class="dropdown-item" href="/logout">
                         <i class="dropdown-item-icon me-2">
-                            <img src="assets/images/icons/signout_2.gif" class="icons" alt="">
+                            <img src="assets/images/Icons/signout_2.gif" class="icons" alt="">
                         </i>
                         Sign Out
                     </a>

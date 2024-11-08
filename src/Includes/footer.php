@@ -25,7 +25,7 @@
                  ">
        </span>
         <span class="float-none float-sm-end mt-1 mt-sm-0 text-center text-white off">
-                <img src="assets/images/icons/anime_2.gif" alt="logo"
+                <img src="assets/images/Icons/anime_2.gif" alt="logo"
                      style="height: 60px; width: 60px;
                      object-fit: contain;
                  ">

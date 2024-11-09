@@ -6,6 +6,9 @@ $query = "";
 if(isset($_SERVER['QUERY_STRING'])){
     $query = $_SERVER['QUERY_STRING'];
 }
+if (stripos($query, '&') !== false) {
+    $query = substr($query, 0, strpos($query, "&"));
+}
 /**  production setting */
 //production
 //if(isset($_SERVER['REDIRECT_QUERY_STRING'])){

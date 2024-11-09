@@ -3,14 +3,14 @@ $uri = $_SERVER['REQUEST_URI'];
 $query = "";
 /**  Test Mode setting */
 //offline Debug
-//if(isset($_SERVER['QUERY_STRING'])){
-//    $query = $_SERVER['QUERY_STRING'];
-//}
+if(isset($_SERVER['QUERY_STRING'])){
+    $query = $_SERVER['QUERY_STRING'];
+}
 /**  production setting */
 //production
-if(isset($_SERVER['REDIRECT_QUERY_STRING'])){
-    $query = $_SERVER['REDIRECT_QUERY_STRING'];
-}
+//if(isset($_SERVER['REDIRECT_QUERY_STRING'])){
+//    $query = $_SERVER['REDIRECT_QUERY_STRING'];
+//}
 
 switch ($uri) {
     /** Application View routs and calls

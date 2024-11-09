@@ -43,7 +43,7 @@ switch ($uri) {
         loginCheck();
         include_once ('src/views/auth/signup.php');
         break;
-    case "/login?":
+    case "/login?$query":
     case "/login":
         loginCheck();
         include_once ('src/views/auth/login.php');

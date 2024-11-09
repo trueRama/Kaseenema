@@ -3,17 +3,19 @@ $uri = $_SERVER['REQUEST_URI'];
 $query = "";
 /**  Test Mode setting */
 //offline Debug
-if(isset($_SERVER['QUERY_STRING'])){
-    $query = $_SERVER['QUERY_STRING'];
-}
-if (stripos($query, '&') !== false) {
-    $query = substr($query, +1, strpos($query, "&"));
-}
+//if(isset($_SERVER['QUERY_STRING'])){
+//    $query = $_SERVER['QUERY_STRING'];
+//}
 /**  production setting */
 //production
-//if(isset($_SERVER['REDIRECT_QUERY_STRING'])){
-//    $query = $_SERVER['REDIRECT_QUERY_STRING'];
-//}
+if(isset($_SERVER['REDIRECT_QUERY_STRING'])){
+    $query = $_SERVER['REDIRECT_QUERY_STRING'];
+}
+$character = "&";
+// Find the position of the character
+$position = strpos($query, $character);
+// Extract the part of the string after the character
+$query = substr($query, $position + 1);
 
 switch ($uri) {
     /** Application View routs and calls

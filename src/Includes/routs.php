@@ -16,7 +16,6 @@ $character = "&";
 $position = strpos($query, $character);
 // Extract the part of the string after the character
 $query = substr($query, $position + 1);
-
 switch ($uri) {
     /** Application View routs and calls
      *
@@ -106,6 +105,11 @@ switch ($uri) {
    case "/upload_movies?{$query}":
    case "/upload_movies":
         include_once('apis/create/upload_movies.php');
+        break;
+    //Upload episodes api
+   case "/upload_episodes?{$query}":
+   case "/upload_episodes":
+        include_once('apis/create/upload_episodes.php');
         break;
     //Upload Categories api
    case "/upload_categories?{$query}":

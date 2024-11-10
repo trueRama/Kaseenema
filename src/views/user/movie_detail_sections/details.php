@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card">
+                        <div class="card mt-2">
                             <div class="card-body">
                                 <h4 class="card-title card-title-dash">Related Movies</h4>
                                 <div class="mt-3 w-100">

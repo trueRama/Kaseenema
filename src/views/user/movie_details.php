@@ -7,6 +7,7 @@ $movie_url = "";
 $trailer_url = "";
 $voice = "";
 $move_code = filter_input(INPUT_GET, 'movie')??"";
+$episode_url = filter_input(INPUT_POST, 'episode_url')??"";
 $type = "";
 $anime = "";
 //get movie details
@@ -21,6 +22,9 @@ if($u_check_get_movie > 0){
      }
      $description = $move_row['description'];
      $movie_url = $move_row['movie_url'];
+     if($episode_url != NULL && $episode_url != ""){
+         $movie_url = $episode_url;
+     }
      $trailer_url = $move_row['trailer_url'];
      $voice = $move_row['voice'];
     if($move_row['poster_image'] != NULL && $move_row['poster_image'] != "" && $move_row['poster_image'] != "url"){
@@ -167,5 +171,46 @@ if(isset($_POST['cat'])){
 </div>
 <?php
 include_once ('src/views/user/movie_detail_sections/add_cat_details.php');
+if($type == "series"){
+?>
+<div class="row flex-grow">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card card-rounded">
+            <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-start">
+                    <div>
+                        <h4 class="card-title card-title-dash">Episodes</h4>
+                    </div>
+                    <?php if($account_user_type == "admin") { ?>
+                    <div>
+                        <button class="btn btn-primary btn-sm text-white mb-0 me-0 account" type="button"
+                                onclick="add_trader_open()">
+                            <i class="mdi mdi-movie"></i> Upload Episodes</button>
+                    </div>
+                    <?php } ?>
+                </div>
+                <h6>
+                    <p class="text-danger"><?php echo $system_message; ?></p>
+                </h6>
+                <div class="row" >
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <?php include_once ('src/views/user/movie_detail_sections/episodes.php'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+    if($account_user_type == "admin") {
+        include_once ('src/views/admin/studio/upload_episodes.php');
+    }
+}
 include_once ('src/views/user/movie_detail_sections/details.php');
 

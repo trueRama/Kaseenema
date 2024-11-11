@@ -132,7 +132,7 @@ if(isset($_POST['search'])){
                             </tbody>
                         </table>
                         <?php
-                        include ("src/includes/pagination.php");
+                        include ("src/Includes/pagination.php");
                         ?>
                     </div>
                 </div>

@@ -21,7 +21,7 @@
                         <div class="card detail_card_content" data-select2-id="9">
                             <div class="card-body" data-select2-id="8">
                                 <?php if($cover_image != "" && $cover_image != "url" && $cover_image != Null && $cover_image != "assets/images/favicon.png"){ ?>
-                                <iframe class="movie_poster"  src="<?php echo $cover_image; ?>"></iframe>
+                                <img class="movie_poster"  src="<?php echo $cover_image; ?>"  alt="Movie Poster"/>
                                 <?php }else{ ?>
                                 <img src="assets/images/icons/movies.png" alt="No Media Content" class="movie_poster" style="color: white; font-size: 25px; font-weight: 700;">
                                 <?php } ?>

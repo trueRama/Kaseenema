@@ -139,6 +139,7 @@ if(isset($_POST['cat'])){
         object-position: center;
         border-radius: 10px;
         border: 1px solid rgba(255, 0, 0, 0.9);
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
     }
     .player_content{
         border-radius: 10px;

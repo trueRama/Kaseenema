@@ -41,6 +41,17 @@ if(isset($_POST['search'])){
     LIMIT $this_page_first_result , $results_per_page";
 }
 ?>
+<style>
+.disc{
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+max-width: 200px;
+overflow: hidden;
+text-overflow: ellipsis;
+height:56px;
+}
+</style>
 <div class="row flex-grow">
     <div class="col-12 grid-margin stretch-card">
         <div class="card card-rounded">
@@ -118,7 +129,7 @@ if(isset($_POST['search'])){
                                                 <img src="<?php echo $image; ?>" alt="">
                                                 <div>
                                                     <h6><?php echo $movie; ?></h6>
-                                                    <p><?php echo $description; ?></p>
+                                                    <p class="disc"><?php echo $description; ?></p>
                                                 </div>
                                             </div>
                                         </td>

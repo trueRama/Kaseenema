@@ -68,6 +68,7 @@ if(isset($_POST["add_movies"]))
                     }
                     //ignore empty data strings
                     if($movie_name != "Type" && $movie_name != "movie_name" && $movie_name != ""){
+                        // echo "$movie_name yes <br/>";
                         //create and update new user records and data
                         $movie_code = "MV0000KS";
                         $user = mysqli_query($conn, "SELECT * FROM movies order by id DESC LIMIT 1");
@@ -79,10 +80,16 @@ if(isset($_POST["add_movies"]))
                         }
                         //check duplicate data before adding new data
                         $movie_dup = mysqli_query($conn, "SELECT * FROM movies WHERE name = '$movie_name'");
-                        if(mysqli_num_rows($movie_dup) == 0){
-                            mysqli_query($conn, "INSERT INTO movies(movie_code,name,cover_image,poster_image,voice,movie_url,trailer_url,description,movie_type,animetion_status)
+                        $movie_dup = mysqli_num_rows($movie_dup);
+                        if($movie_dup == 0){
+                            $movie_dup =  mysqli_query($conn, "INSERT INTO movies(movie_code,name,cover_image,poster_image,voice,movie_url,trailer_url,description,movie_type,animetion_status)
                             VALUES ('$movie_code','$movie_name','$cover','$poster','$vj','$movie','$trailer','$description','$type','$state')")
                             or die(mysqli_error($conn));
+                            // if($movie_dup){
+                            //     echo "yes <br/>";
+                            // }
+                        }else{
+                            // echo "No <br/>";
                         }
                     }
                 }

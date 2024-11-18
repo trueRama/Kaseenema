@@ -130,7 +130,7 @@
                                             <div class="form-group" data-select2-id="7">
                                                 <label for="description">Movie Description</label>
                                                 <textarea class="form-control" id="description" style="height: 9.75rem;"
-                                                  rows="10" name="description" placeholder="<?php echo $voice; ?>"></textarea>
+                                                  rows="10" name="description" placeholder="<?php echo $description; ?>"></textarea>
                                             </div>
                                             <button name="edit" class="btn btn-primary btn-sm text-white mb-0 me-0 account" type="submit">
                                                 <i class="mdi mdi-book-arrow-down"></i> Save Changes

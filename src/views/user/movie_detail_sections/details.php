@@ -20,8 +20,8 @@
                     <div class="col-md-6" data-select2-id="10">
                         <div class="card detail_card_content" data-select2-id="9">
                             <div class="card-body" data-select2-id="8">
-                                <?php if($poster != "" && $poster != "url" && $poster != Null && $poster != "assets/images/favicon.png"){ ?>
-                                <iframe class="movie_poster"  src="<?php echo $poster; ?>/preview"></iframe>
+                                <?php if($cover_image != "" && $cover_image != "url" && $cover_image != Null && $cover_image != "assets/images/favicon.png"){ ?>
+                                <iframe class="movie_poster"  src="<?php echo $cover_image; ?>"></iframe>
                                 <?php }else{ ?>
                                 <img src="assets/images/icons/movies.png" alt="No Media Content" class="movie_poster" style="color: white; font-size: 25px; font-weight: 700;">
                                 <?php } ?>

@@ -58,18 +58,22 @@ if(isset($_POST['edit'])){
     if($edit_poster == ""){
         $edit_poster = $poster;
     }
+    $edit_poster = $conn->real_escape_string($edit_poster);
     $edit_description = filter_input(INPUT_POST, 'description');
     if($edit_description == ""){
         $edit_description = $description;
     }
+    $edit_description = $conn->real_escape_string($edit_description);
     $edit_movie_url = filter_input(INPUT_POST, 'movie_url');
     if($edit_movie_url == ""){
         $edit_movie_url = $movie_url;
     }
+    $edit_movie_url = $conn->real_escape_string($edit_movie_url);
     $edit_trailer_url = filter_input(INPUT_POST, 'trailer_url');
     if($edit_trailer_url == ""){
         $edit_trailer_url = $trailer_url;
     }
+    $edit_trailer_url = $conn->real_escape_string($edit_trailer_url);
     $edit_voice = filter_input(INPUT_POST, 'voice');
     if($edit_voice == ""){
         $edit_voice = $voice;
@@ -86,16 +90,16 @@ if(isset($_POST['edit'])){
     $messageInsertSQL = ("UPDATE movies Set 
       name = '$edit_movie_name',
       cover_image = '$edit_cover_image',
-      poster_image = '$edit_poster',
+      poster_image = '$edit_cover_image',
       voice  = '$edit_voice',
       movie_url = '$edit_movie_url',
       trailer_url = '$edit_trailer_url',
       description = '$edit_description',
       movie_type = '$movie_type',
       animetion_status  = '$anime_status',
-      created_at = now()  
+      created_at = now() 
     WHERE  movie_code = '$move_code'");
-    mysqli_query($conn, $messageInsertSQL);
+    $messageInsertSQL = mysqli_query($conn, $messageInsertSQL);
     redirect("Movie Details Updated","/detail?movie=$move_code");
 }
 //adding categories to movie

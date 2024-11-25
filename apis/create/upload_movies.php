@@ -79,7 +79,7 @@ if(isset($_POST["add_movies"]))
                             $movie_code = $movie_code.$ID."KS";
                         }
                         //check duplicate data before adding new data
-                        $movie_dup = mysqli_query($conn, "SELECT * FROM movies WHERE name = '$movie_name'");
+                        $movie_dup = mysqli_query($conn, "SELECT * FROM movies WHERE movie_url = '$movie'");
                         $movie_dup = mysqli_num_rows($movie_dup);
                         if($movie_dup == 0){
                             $movie_dup =  mysqli_query($conn, "INSERT INTO movies(movie_code,name,cover_image,poster_image,voice,movie_url,trailer_url,description,movie_type,animetion_status)

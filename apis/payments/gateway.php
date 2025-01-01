@@ -65,44 +65,56 @@ if(isset($_POST['phone_number'])){
     VALUES ('$user_cord', '$end_date', '$payment_reference',0)");
     mysqli_query($conn, $messageInsertSQL);
     $message = "Payment Processing";
-    redirect_payment("https://kaseenema.com/wolfarm", $secretKey, $baseURL, $phone, $email, $username, $payment_reference,
-        $amount, $currency, $subscription_package, "https://app.kaseenema.com/callback");
+
+    //initiate Values to form Get
+    $donation_price= $amount;
+    $phone_number= $phone;
+    $donor_name= $username;
+    $order_id= $payment_reference;
+
+    //test API DATA
+    echo "$donor_name<br/>";
+    echo "$phone_number<br/>";
+    echo "$email<br/>";
+    echo "$order_id<br/>";
+    echo "$donation_price<br/>";
+
 }else{
     $message = "Invalid Payment Request";
     redirect($message, "/subscription");
 }
 
-function redirect_payment($url, $secretKey, $baseURL, $phone, $email, $username,
-$payment_reference, $amount, $currency, $subscription_package, $callback): void
-{
-    echo "<form id='the-form' 
-      method='post' 
-      enctype='multipart/form-data' 
-      action='$url'>\n";
-    echo "<input type='hidden' name='secretKey' value='$secretKey'>\n";
-    echo "<input type='hidden' name='baseURL' value='$baseURL'>\n";
-    echo "<input type='hidden' name='phone' value='$phone'>\n";
-    echo "<input type='hidden' name='email' value='$email'>\n";
-    echo "<input type='hidden' name='username' value='$username'>\n";
-    echo "<input type='hidden' name='payment_reference' value='$payment_reference'>\n";
-    echo "<input type='hidden' name='amount' value='$amount'>\n";
-    echo "<input type='hidden' name='currency' value='$currency'>\n";
-    echo "<input type='hidden' name='subscription_package' value='$subscription_package'>\n";
-    echo "<input type='hidden' name='callback' value='$callback'>\n";
-    echo <<<ENDOFFORM
-        <p id="the-button" style="display:none;">
-        Click the button if page doesn't redirect within 3 seconds.
-        <br>
-        <input type="submit" value="Click this button">
-        </p>
-        </form>
-        <script type="text/javascript">
-        function DisplayButton()
-        {
-           document.getElementById("the-button").style.display="block";
-        }
-        setTimeout(DisplayButton,3000);
-        document.getElementById("the-form").submit();
-        </script>
-ENDOFFORM;
-}
+//function redirect_payment($url, $secretKey, $baseURL, $phone, $email, $username,
+//$payment_reference, $amount, $currency, $subscription_package, $callback): void
+//{
+//    echo "<form id='the-form'
+//      method='post'
+//      enctype='multipart/form-data'
+//      action='$url'>\n";
+//    echo "<input type='hidden' name='secretKey' value='$secretKey'>\n";
+//    echo "<input type='hidden' name='baseURL' value='$baseURL'>\n";
+//    echo "<input type='hidden' name='phone' value='$phone'>\n";
+//    echo "<input type='hidden' name='email' value='$email'>\n";
+//    echo "<input type='hidden' name='username' value='$username'>\n";
+//    echo "<input type='hidden' name='payment_reference' value='$payment_reference'>\n";
+//    echo "<input type='hidden' name='amount' value='$amount'>\n";
+//    echo "<input type='hidden' name='currency' value='$currency'>\n";
+//    echo "<input type='hidden' name='subscription_package' value='$subscription_package'>\n";
+//    echo "<input type='hidden' name='callback' value='$callback'>\n";
+//    echo <<<ENDOFFORM
+//        <p id="the-button" style="display:none;">
+//        Click the button if page doesn't redirect within 3 seconds.
+//        <br>
+//        <input type="submit" value="Click this button">
+//        </p>
+//        </form>
+//        <script type="text/javascript">
+//        function DisplayButton()
+//        {
+//           document.getElementById("the-button").style.display="block";
+//        }
+//        setTimeout(DisplayButton,3000);
+//        document.getElementById("the-form").submit();
+//        </script>
+//ENDOFFORM;
+//}

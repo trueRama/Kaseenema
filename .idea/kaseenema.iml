@@ -27,8 +27,13 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/spipu/html2pdf" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/options-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tecnickcom/tcpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/uuid" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="intl-tel-input" level="application" />
+    <orderEntry type="library" name="bootstrap-select" level="application" />
   </component>
 </module>

@@ -17,8 +17,10 @@ return array(
     'Svg\\' => array($vendorDir . '/dompdf/php-svg-lib/src/Svg'),
     'Spipu\\Html2Pdf\\' => array($vendorDir . '/spipu/html2pdf/src'),
     'Sabberworm\\CSS\\' => array($vendorDir . '/sabberworm/php-css-parser/src'),
+    'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
-    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src', $vendorDir . '/psr/http-factory/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'PhpOffice\\PhpSpreadsheet\\' => array($vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
@@ -27,5 +29,6 @@ return array(
     'Endroid\\QrCode\\' => array($vendorDir . '/endroid/qrcode/src'),
     'Dompdf\\' => array($vendorDir . '/dompdf/dompdf/src'),
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
+    'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'App\\' => array('/'),
 );

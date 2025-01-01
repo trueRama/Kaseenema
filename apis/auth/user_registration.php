@@ -36,6 +36,13 @@ function registration($conn,$username,$phone,$email,$password)
                 $new_user = mysqli_query($conn, "INSERT INTO users(user_code, username, email, mobile, password)
                 VALUES ('$user_code', '$users_username', '$users_email', '$users_phone', '$hashed_password')") or die(mysqli_error($conn));
                 $message = "Account(s) Created Successfully";
+                //create one month free of subscription
+                $date = new DateTime();
+                $date->modify('+31 days');
+                $end_date = $date->format('Y-m-d H:i:s');
+                $messageInsertSQL = ("INSERT INTO subscriptions(access_code, end_date, payment_reference, status) 
+                VALUES ('$user_code', '$end_date', '$user_code', 1)");
+                mysqli_query($conn, $messageInsertSQL);
             }
         }
     }

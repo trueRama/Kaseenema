@@ -35,6 +35,7 @@ switch ($uri) {
     case "/series?{$query}":
     case '/animations':
     case "/animations?{$query}":
+        subscriptionCheck($conn);
         loggedOutCheck();
         include_once ('src/views/dashboard.php');
         break;
@@ -51,6 +52,22 @@ switch ($uri) {
     case "/login":
         loginCheck();
         include_once ('src/views/auth/login.php');
+        break;
+    /** Application subscribe User
+     *
+     *===================================================================================
+     */
+    case "/subscription?$query":
+    case "/subscription":
+        include_once ('src/views/user/subscription/subscription.php');
+        break;
+    case "/payment?$query":
+    case "/payment":
+        include_once ('apis/payments/gateway.php');
+        break;
+    case "/callback?$query":
+    case "/callback":
+        include_once ('apis/payments/callback.php');
         break;
     /** Application logout User
      *

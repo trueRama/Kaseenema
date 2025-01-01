@@ -35,6 +35,11 @@ all copies or substantial portions of the Software.
     <!-- endinject -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <script type="text/javascript" src="assets/js/instascan.min.js"></script>
+    <!--    Phone verification -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.10/build/js/intlTelInput.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
+    <!--=============== BOXICONS ===============-->
     <style>
         .sidebar{
             background-color: black;

@@ -8,6 +8,7 @@ class ComposerStaticInit1dde8d17d93adba7aee8a13d10e627d0
 {
     public static $files = array (
         'a9ed0d27b5a698798a89181429f162c5' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/Common/customFunctions.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -33,6 +34,11 @@ class ComposerStaticInit1dde8d17d93adba7aee8a13d10e627d0
             'Svg\\' => 4,
             'Spipu\\Html2Pdf\\' => 15,
             'Sabberworm\\CSS\\' => 15,
+        ),
+        'R' => 
+        array (
+            'Ramsey\\Uuid\\' => 12,
+            'Ramsey\\Collection\\' => 18,
         ),
         'P' => 
         array (
@@ -61,6 +67,10 @@ class ComposerStaticInit1dde8d17d93adba7aee8a13d10e627d0
         'C' => 
         array (
             'Complex\\' => 8,
+        ),
+        'B' => 
+        array (
+            'Brick\\Math\\' => 11,
         ),
         'A' => 
         array (
@@ -113,14 +123,22 @@ class ComposerStaticInit1dde8d17d93adba7aee8a13d10e627d0
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
+        'Ramsey\\Collection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/collection/src',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -153,6 +171,10 @@ class ComposerStaticInit1dde8d17d93adba7aee8a13d10e627d0
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
+        'Brick\\Math\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brick/math/src',
         ),
         'App\\' => 
         array (

@@ -14,7 +14,7 @@
 $sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' order by id, season ASC";
 $query_pgs_movie = mysqli_query($conn, $sql_pgs_movie);
 $u_check_pgs_movie = mysqli_num_rows($query_pgs_movie);
-$has = 0;
+$has = 1;
 if($u_check_pgs_movie > 0){
     while ($row_movie = mysqli_fetch_array($query_pgs_movie, MYSQLI_ASSOC)){
         $has++;

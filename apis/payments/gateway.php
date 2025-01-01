@@ -79,42 +79,65 @@ if(isset($_POST['phone_number'])){
     echo "$order_id<br/>";
     echo "$donation_price<br/>";
 
+     // Data for the API request
+     $postData = [
+         "tx_ref" => $order_id, // Unique transaction reference/ order id
+         "amount" => $donation_price,        // Payment amount
+         "currency" => "UGX",       // Currency code
+         "redirect_url" => "https://app.kaseenema.com/", // URL to redirect after payment
+         "payment_options" => "card,ussd,mobilemoney", // Payment methods
+         "customer" => [
+             "email" => $email, // Customer's email
+             "phonenumber" => $phone_number,    // Customer's phone number
+             "name" => $donor_name              // Customer's name
+         ],
+         "customizations" => [
+             "title" => "KaSEENEMA Entertainments",
+             "description" => "$subscription_package Streaming Subscription",
+             "logo" => "https://kaseenema.com/wp-content/uploads/2024/10/cropped-Screenshot-2024-10-26-114334-1.png" // Logo URL
+         ]
+     ];
+
+     // Initialize cURL session
+     $ch = curl_init();
+
+     // Set cURL options
+     curl_setopt($ch, CURLOPT_URL, $baseURL);
+     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+     curl_setopt($ch, CURLOPT_POST, 1);
+     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
+     curl_setopt($ch, CURLOPT_HTTPHEADER, [
+         "Authorization: Bearer $secretKey", // Authentication header
+         "Content-Type: application/json"   // Set content type to JSON
+     ]);
+
+     // Execute cURL request and capture the response
+     $response = curl_exec($ch);
+     print_r($response);
+     // Check for cURL errors
+     if (curl_errno($ch)) {
+         echo 'Error: ' . curl_error($ch);
+     } else {
+         // Decode and handle the response
+         $responseDecoded = json_decode($response, true);
+
+         if ($responseDecoded['status'] === 'success' && isset($responseDecoded['data']['link'])) {
+             // Get the payment link
+             $paymentLink = $responseDecoded['data']['link'];
+
+             // Redirect the user to the payment link
+             header("Location: $paymentLink");
+             exit();
+         } else {
+             // Handle API response error
+             echo "Error: " . $responseDecoded['message'];
+         }
+     }
+
+     // Close cURL session
+     curl_close($ch);
+
 }else{
     $message = "Invalid Payment Request";
     redirect($message, "/subscription");
 }
-
-//function redirect_payment($url, $secretKey, $baseURL, $phone, $email, $username,
-//$payment_reference, $amount, $currency, $subscription_package, $callback): void
-//{
-//    echo "<form id='the-form'
-//      method='post'
-//      enctype='multipart/form-data'
-//      action='$url'>\n";
-//    echo "<input type='hidden' name='secretKey' value='$secretKey'>\n";
-//    echo "<input type='hidden' name='baseURL' value='$baseURL'>\n";
-//    echo "<input type='hidden' name='phone' value='$phone'>\n";
-//    echo "<input type='hidden' name='email' value='$email'>\n";
-//    echo "<input type='hidden' name='username' value='$username'>\n";
-//    echo "<input type='hidden' name='payment_reference' value='$payment_reference'>\n";
-//    echo "<input type='hidden' name='amount' value='$amount'>\n";
-//    echo "<input type='hidden' name='currency' value='$currency'>\n";
-//    echo "<input type='hidden' name='subscription_package' value='$subscription_package'>\n";
-//    echo "<input type='hidden' name='callback' value='$callback'>\n";
-//    echo <<<ENDOFFORM
-//        <p id="the-button" style="display:none;">
-//        Click the button if page doesn't redirect within 3 seconds.
-//        <br>
-//        <input type="submit" value="Click this button">
-//        </p>
-//        </form>
-//        <script type="text/javascript">
-//        function DisplayButton()
-//        {
-//           document.getElementById("the-button").style.display="block";
-//        }
-//        setTimeout(DisplayButton,3000);
-//        document.getElementById("the-form").submit();
-//        </script>
-//ENDOFFORM;
-//}

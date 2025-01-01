@@ -10,22 +10,18 @@ $color = "red";
 if (isset($_GET['transaction_id'])) {
     $transaction_id = $_GET['transaction_id'];
 }
-$status_value = 0;
 // if status is success store record with success status and trans ref
 if($status == "successful"){
-    $status_value = 1;
-    $user_notification = "Payment Successful";
+    $user_notification = "Payment Successful Subscription Activated";
     $color = "Green";
+    //Update wallet payment status
+    mysqli_query($conn,"UPDATE wallet_payments SET payment_status = 1 WHERE payment_reference = '$txt_ref'");
+    mysqli_query($conn,"UPDATE subscriptions SET status = 1 WHERE payment_reference = '$txt_ref'");
+}else{
+    $user_notification = "Payment Cancelled Subscription Not Activated";
+    mysqli_query($conn,"DELETE FROM subscriptions WHERE payment_reference = '$txt_ref'");
 }
-if($status == "cancelled"){
-    $user_notification = "Payment Cancelled";
-}
-echo $txt_ref;
-//put update query
-if($status_value == 1){
-//    $messageInsertSQL = ("UPDATE user Set avatar = '$ImageSignature', updated_at = now()  WHERE  user_code = '$account_user_cord' ");
-//    $messageInsertQuery = mysqli_query($conn, $messageInsertSQL);
-}
+echo "Transaction Reference: ".$txt_ref;
 ?>
 <style>
     .notification{

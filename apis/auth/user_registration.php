@@ -40,9 +40,9 @@ function registration($conn,$username,$phone,$email,$password)
                 $date = new DateTime();
                 $date->modify('+31 days');
                 $end_date = $date->format('Y-m-d H:i:s');
-                $messageInsertSQL = ("INSERT INTO subscriptions(access_code, end_date, payment_reference, status) 
-                VALUES ('$user_code', '$end_date', '$user_code', 1)");
-                mysqli_query($conn, $messageInsertSQL);
+//                $messageInsertSQL = ("INSERT INTO subscriptions(access_code, end_date, payment_reference, status)
+//                VALUES ('$user_code', '$end_date', '$user_code', 1)");
+//                mysqli_query($conn, $messageInsertSQL);
             }
         }
     }

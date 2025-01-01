@@ -27,23 +27,23 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <li class="nav-item <?php echo $vpy_in; ?>">
-            <a class="nav-link" href="/approved">
+            <a class="nav-link" href="/payments?type=approved">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/Icons/approved.png" class="icons" alt="">
                 </i>
                 <span class="menu-title">Verified Payments</span>
             </a>
         </li>
-        <li class="nav-item <?php echo $ppy_in; ?>">
-            <a class="nav-link" href="/pending">
-                <i class="dropdown-item-icon me-2">
-                    <img src="assets/images/Icons/pending.jpg" class="icons" alt="">
-                </i>
-                <span class="menu-title">Pending Payments</span>
-            </a>
-        </li>
+<!--        <li class="nav-item --><?php //echo $ppy_in; ?><!--">-->
+<!--            <a class="nav-link" href="/pending">-->
+<!--                <i class="dropdown-item-icon me-2">-->
+<!--                    <img src="assets/images/Icons/pending.jpg" class="icons" alt="">-->
+<!--                </i>-->
+<!--                <span class="menu-title">Pending Payments</span>-->
+<!--            </a>-->
+<!--        </li>-->
         <li class="nav-item <?php echo $fpy_in; ?>">
-            <a class="nav-link" href="/failed">
+            <a class="nav-link" href="/payments?type=failed">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/Icons/rejected.jpg" class="icons" alt="">
                 </i>

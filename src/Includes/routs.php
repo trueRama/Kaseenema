@@ -67,6 +67,7 @@ switch ($uri) {
         break;
     case "/callback?$query":
     case "/callback":
+        echo "<h1>Subscription Status</h1><p>Your subscription status is available here!</p>";
         include_once ('apis/payments/callback.php');
         break;
     /** Application logout User

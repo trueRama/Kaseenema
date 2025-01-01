@@ -28,7 +28,7 @@ if($_SESSION['account_type'] != "admin"){
 if(isset($_POST['search'])){
     $search = $_POST['search'];
     $sql_pgs = "SELECT * FROM wallet_payments WHERE  payment_reference = '$search' order  by id DESC";
-    if($_SESSION['user_type'] != "admin") {
+    if($_SESSION['account_type'] != "admin") {
         $sql_pgs = "SELECT * FROM wallet_payments WHERE  wallet_code = '$wallet_code' AND payment_reference = '$search'  order  by id DESC";
     }
 }
@@ -36,7 +36,7 @@ $query_pgs = mysqli_query($conn, $sql_pgs);
 $u_check_pgs = mysqli_num_rows($query_pgs);
 $number_of_pages = ceil($u_check_pgs/$results_per_page);
 $sql_pgs = "SELECT * FROM wallet_payments WHERE  payment_status = '$status' order  by id DESC LIMIT $this_page_first_result, $results_per_page";
-if($_SESSION['user_type'] != "admin"){
+if($_SESSION['account_type'] != "admin"){
     $sql_pgs = "SELECT * FROM wallet_payments WHERE  wallet_code = '$wallet_code' AND payment_status = '$status' order  by id DESC LIMIT $this_page_first_result, $results_per_page";
 }
 if(isset($_POST['search'])){

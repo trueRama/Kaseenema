@@ -74,11 +74,14 @@ switch ($uri) {
         include_once ('apis/payments/callback.php');
         break;
     case "/payments_approved?$query":
-    case "/payments_field":
-    case "/payments_field?$query":
     case "/payments_approved":
         echo "<h1>Payments Records</h1><p>Your payment records are available here!</p>";
         include_once ('src/views/payments/payment.php');
+        break;
+    case "/payments_field?$query":
+    case "/payments_field":
+        echo "<h1>Payments Records</h1><p>Your payment records are available here!</p>";
+        include_once ('src/views/payments/payment_failed.php');
         break;
     /** Application logout User
      *

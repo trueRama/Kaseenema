@@ -1,6 +1,6 @@
 <?php
-$payment_type = "approved";
-$status = 1;
+$payment_type = "failed";
+$status = 0;
 $wallet_code = 0;
 $username = "";
 $email = "";

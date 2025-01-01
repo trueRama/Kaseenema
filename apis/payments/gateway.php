@@ -69,41 +69,42 @@ if(isset($_POST['phone_number'])){
     VALUES ('$user_cord', '$end_date', '$payment_reference',0)");
     mysqli_query($conn, $messageInsertSQL);
 
-    /**  Data for the API request */
-    $postData = [
-        "tx_ref" => $payment_reference, // Unique transaction reference/ order id
-        "amount" => $amount,        // Payment amount
-        "currency" => "UGX",       // Currency code
-        "redirect_url" => "http://127.0.0.1:8000/callback", // URL to redirect after payment
-        "payment_options" => "card,ussd,mobilemoney", // Payment methods
-        "customer" => [
-            "email" => $email, // Customer's email
-            "phonenumber" => "779397727",    // Customer's phone number
-            "name" => $username              // Customer's name
-        ],
-        "customizations" => [
-            "title" => "KaSEENEMA Entertainments",
-            "description" => "$subscription_package Streaming Subscription",
-            "logo" => "https://kaseenema.com/wp-content/uploads/2024/10/cropped-Screenshot-2024-10-26-114334-1.png" // Logo URL
-        ]
-    ];
-    /** process payment */
-    // Initialize cURL session
-    $ch = curl_init();
-    // Set cURL options
-    curl_setopt($ch, CURLOPT_URL, $baseURL);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "Authorization: Bearer $secretKey", // Authentication header
-        "Content-Type: application/json"   // Set content type to JSON
-    ]);
-    echo $baseURL;
-    // Execute cURL request and capture the response
-    $response = curl_exec($ch);
-    print_r($response);
-    // Check for cURL errors
+    redirect($message, "https://kaseenema.com/wolfarm/");
+//    /**  Data for the API request */
+//    $postData = [
+//        "tx_ref" => $payment_reference, // Unique transaction reference/ order id
+//        "amount" => $amount,        // Payment amount
+//        "currency" => "UGX",       // Currency code
+//        "redirect_url" => "http://127.0.0.1:8000/callback", // URL to redirect after payment
+//        "payment_options" => "card,ussd,mobilemoney", // Payment methods
+//        "customer" => [
+//            "email" => $email, // Customer's email
+//            "phonenumber" => "779397727",    // Customer's phone number
+//            "name" => $username              // Customer's name
+//        ],
+//        "customizations" => [
+//            "title" => "KaSEENEMA Entertainments",
+//            "description" => "$subscription_package Streaming Subscription",
+//            "logo" => "https://kaseenema.com/wp-content/uploads/2024/10/cropped-Screenshot-2024-10-26-114334-1.png" // Logo URL
+//        ]
+//    ];
+//    /** process payment */
+//    // Initialize cURL session
+//    $ch = curl_init();
+//    // Set cURL options
+//    curl_setopt($ch, CURLOPT_URL, $baseURL);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//    curl_setopt($ch, CURLOPT_POST, 1);
+//    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postData));
+//    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+//        "Authorization: Bearer $secretKey", // Authentication header
+//        "Content-Type: application/json"   // Set content type to JSON
+//    ]);
+//    echo $baseURL;
+//    // Execute cURL request and capture the response
+//    $response = curl_exec($ch);
+//    print_r($response);
+//    // Check for cURL errors
 //    if (curl_errno($ch)) {
 //        echo 'Error: ' . curl_error($ch);
 //    } else {
@@ -120,8 +121,8 @@ if(isset($_POST['phone_number'])){
 //            echo "Error: ".$responseDecoded['message'];
 //        }
 //    }
-//     Close cURL session
-    curl_close($ch);
+////     Close cURL session
+//    curl_close($ch);
 }else{
     $message = "Invalid Payment Request";
     redirect($message, "/subscription");

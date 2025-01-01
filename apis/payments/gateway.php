@@ -99,6 +99,7 @@ if(isset($_POST['phone_number'])){
         "Authorization: Bearer $secretKey", // Authentication header
         "Content-Type: application/json"   // Set content type to JSON
     ]);
+    echo $baseURL;
     // Execute cURL request and capture the response
     $response = curl_exec($ch);
     print_r($response);

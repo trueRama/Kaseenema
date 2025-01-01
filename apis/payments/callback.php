@@ -29,9 +29,9 @@ if($status_value == 1){
 ?>
 <style>
     .notification{
-        position: fixed;
-        top:50%;
-        left: 25%;
+        /*position: fixed;*/
+        /*top:50%;*/
+        /*left: 25%;*/
         color: <?= $color ?>;
         font-weight: 700;
         font-size: 50px;

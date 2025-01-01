@@ -112,7 +112,7 @@ if(isset($_POST['search'])){
                                         </div>
                                     </td>
                                     <td>
-                                        <?php if($status != 1){ ?>
+                                        <?php if($status != 0){ ?>
                                             <button class="btn btn-sm badge-opacity-success  show_desktop" name="val" type="submit">
                                                 Completed Payment
                                             </button>

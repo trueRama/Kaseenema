@@ -27,7 +27,7 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <li class="nav-item <?php echo $vpy_in; ?>">
-            <a class="nav-link" href="/payments_records?type=approved">
+            <a class="nav-link" href="/payments_approved?type=approved">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/Icons/approved.png" class="icons" alt="">
                 </i>
@@ -43,7 +43,7 @@ if ($account_user_cord != "0000") {
 <!--            </a>-->
 <!--        </li>-->
         <li class="nav-item <?php echo $fpy_in; ?>">
-            <a class="nav-link" href="/payments_records?type=failed">
+            <a class="nav-link" href="/payments_field?type=failed">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/Icons/rejected.jpg" class="icons" alt="">
                 </i>

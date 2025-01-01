@@ -84,7 +84,7 @@ if(isset($_POST['phone_number'])){
          "tx_ref" => $order_id, // Unique transaction reference/ order id
          "amount" => $donation_price,        // Payment amount
          "currency" => "UGX",       // Currency code
-         "redirect_url" => "https://app.kaseenema.com/", // URL to redirect after payment
+         "redirect_url" => "https://app.kaseenema.com/callback", // URL to redirect after payment
          "payment_options" => "card,ussd,mobilemoney", // Payment methods
          "customer" => [
              "email" => $email, // Customer's email

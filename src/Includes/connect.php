@@ -17,7 +17,7 @@ clearstatcache();
 //mysqli_close($conn);
 //constants
 /** pagination page number */
-$results_per_page = 20;
+$results_per_page = 100;
 /** determine which page number visitor is currently on */
 $pageNumber = 1;
 if (isset($_POST['pageNumber'])) {

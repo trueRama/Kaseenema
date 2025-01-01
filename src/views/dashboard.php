@@ -36,7 +36,7 @@ if(isset($_GET["type"])){
     }
 }
 //check if pgs registered
-$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime order by name ASC LIMIT 100";
+$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime order by id DESC LIMIT 100";
 if(isset($_POST['search'])){
     $search = $_POST['search'];
     $sql_pgs = "SELECT * FROM movies WHERE  name LIKE '%$search%' order by name ASC";
@@ -44,8 +44,8 @@ if(isset($_POST['search'])){
 $query_pgs = mysqli_query($conn, $sql_pgs);
 $u_check_pgs = mysqli_num_rows($query_pgs);
 $number_of_pages = ceil($u_check_pgs/$results_per_page);
-$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime order by name 
-ASC LIMIT $this_page_first_result, $results_per_page";
+$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime order by id DESC 
+LIMIT $this_page_first_result, $results_per_page";
 if(isset($_POST['search'])){
     $search = $_POST['search'];
     $sql_pgs = "SELECT * FROM movies WHERE  name LIKE '%$search%' order by name ASC 

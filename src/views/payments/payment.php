@@ -14,9 +14,9 @@ $mobile = "";
 $status = "";
 //check if pgs registered
 $sql_pgs = "SELECT * FROM wallet_payments WHERE  payment_status = '$status' order  by id DESC LIMIT 100";
-if($_SESSION['user_type'] != "admin"){
+if($_SESSION['account_type'] != "admin"){
     $user_code = $_SESSION['user_code'];
-    $sql_pgs = "SELECT * FROM user_wallet WHERE  user_code = '$user_code'";
+    $sql_pgs = "SELECT * FROM user_wallet WHERE  use_code = '$user_code'";
     $query_pgs = mysqli_query($conn, $sql_pgs);
     $u_check_pgs = mysqli_num_rows($query_pgs);
     if($u_check_pgs > 0){

@@ -73,8 +73,9 @@ switch ($uri) {
         echo "<h1>Subscription Status</h1><p>Your subscription status is available here!</p>";
         include_once ('apis/payments/callback.php');
         break;
-    case "/payments?$query":
-    case "/payments":
+    case "/payments_records?$query":
+    case "/payments_records":
+        echo "<h1>Payments Records</h1><p>Your payment records are available here!</p>";
         include_once ('src/views/payments/payment.php');
         break;
     /** Application logout User

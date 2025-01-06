@@ -14,7 +14,7 @@
                                     <form action="<?php echo $pageID; ?>?movie=<?php echo $move_code; ?>" method="post" enctype="multipart/form-data">
                                         <div class="form-group" data-select2-id="7">
                                             <label for="cat">Select Category to Add to this Movie</label>
-                                            <select class="js-example-basic-single w-100 select2-hidden-accessible" id="cat"
+                                            <select class="form-control js-example-basic-single w-100 select2-hidden-accessible" id="cat"
                                                     name="cat" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                                 <?php
                                                 $sql_pgs_cat = "SELECT * FROM categories order by category ASC";
@@ -38,39 +38,66 @@
                         </div>
                         <!--           Movie Categories             -->
                         <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title card-title-dash">This Movie Categories</h4>
-                                    <div class="mt-3 w-100">
-                                        <?php
-                                        $sql_pgs_movie = "SELECT * FROM movie_categories WHERE movie_code = '$move_code' order by id ASC";
-                                        $query_pgs_movie = mysqli_query($conn, $sql_pgs_movie);
-                                        $u_check_pgs_movie = mysqli_num_rows($query_pgs_movie);
-                                        if($u_check_pgs_movie > 0){
-                                            while ($row_movie = mysqli_fetch_array($query_pgs_movie, MYSQLI_ASSOC)){
-                                                $id = $row_movie['category_id'];
-                                                $sql_pgs_cat = "SELECT * FROM categories WHERE id = '$id'";
-                                                $query_pgs_cat = mysqli_query($conn, $sql_pgs_cat);
-                                                $row = mysqli_fetch_array($query_pgs_cat, MYSQLI_ASSOC);
-                                                $category = $row['category'];
-                                                $category_pic = $row['category_pic'];
-                                                $image_cat = "assets/images/favicon.png";
-                                                if($category_pic != NULL && $category_pic != ""  && $category_pic != "url"){
-                                                    $image_cat = $category_pic;
-                                                }
-                                                ?>
-                                                <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                    <div class="d-flex">
-                                                        <img class="img-sm rounded-10" src="<?php echo $image_cat; ?>" alt="profile">
-                                                        <div class="wrapper ms-3">
-                                                            <p class="ms-1 mb-1 fw-bold"><?php echo $category; ?></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php } }else{ echo "No Categories Added Yet"; } ?>
-                                    </div>
-                                </div>
+                            <div>
+                                <h4 class="card-title card-title-dash">Change Movie Access</h4>
                             </div>
+                           <div class="row">
+                               <div class="col-md-12">
+                                   <form action="<?php echo $pageID; ?>?movie=<?php echo $move_code; ?>"
+                                         method="post" enctype="multipart/form-data">
+                                       <div class="form-group" data-select2-id="7">
+                                           <label for="cat">Change Movie Access</label>
+                                           <select class="form-control js-example-basic-single w-100 select2-hidden-accessible" id="cat"
+                                                   name="movie_access" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                               <option value="<?php echo $selected_access_one_value; ?>">
+                                                   Click Here to Change <?php echo $selected_access_one; ?>
+                                               </option>
+                                               <option value="<?php echo $selected_access_two_value; ?>">
+                                                   <?php echo $selected_access_two; ?>
+                                               </option>
+                                           </select>
+                                       </div>
+                                       <button name="change_access" class="btn btn-primary btn-sm text-white mb-0 me-0 account" type="submit">
+                                           <i class="mdi mdi-book-arrow-down"></i> Save Settings
+                                       </button>
+                                   </form>
+                               </div>
+                               <div class="col-md-12" >
+                                   <div class="card">
+                                       <div class="card-body">
+                                           <h4 class="card-title card-title-dash">This Movie Categories</h4>
+                                           <div class="mt-3 w-100">
+                                               <?php
+                                               $sql_pgs_movie = "SELECT * FROM movie_categories WHERE movie_code = '$move_code' order by id ASC";
+                                               $query_pgs_movie = mysqli_query($conn, $sql_pgs_movie);
+                                               $u_check_pgs_movie = mysqli_num_rows($query_pgs_movie);
+                                               if($u_check_pgs_movie > 0){
+                                                   while ($row_movie = mysqli_fetch_array($query_pgs_movie, MYSQLI_ASSOC)){
+                                                       $id = $row_movie['category_id'];
+                                                       $sql_pgs_cat = "SELECT * FROM categories WHERE id = '$id'";
+                                                       $query_pgs_cat = mysqli_query($conn, $sql_pgs_cat);
+                                                       $row = mysqli_fetch_array($query_pgs_cat, MYSQLI_ASSOC);
+                                                       $category = $row['category'];
+                                                       $category_pic = $row['category_pic'];
+                                                       $image_cat = "assets/images/favicon.png";
+                                                       if($category_pic != NULL && $category_pic != ""  && $category_pic != "url"){
+                                                           $image_cat = $category_pic;
+                                                       }
+                                                       ?>
+                                                       <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
+                                                           <div class="d-flex">
+                                                               <img class="img-sm rounded-10" src="<?php echo $image_cat; ?>" alt="profile">
+                                                               <div class="wrapper ms-3">
+                                                                   <p class="ms-1 mb-1 fw-bold"><?php echo $category; ?></p>
+                                                               </div>
+                                                           </div>
+                                                       </div>
+                                                   <?php } }else{ echo "No Categories Added Yet"; } ?>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
                         </div>
                         <!--    End of Movie Categories                    -->
                         <!--      Edit Movie Details                  -->
@@ -147,3 +174,8 @@
         </div>
     </div>
 <?php } ?>
+<style>
+    select.form-control, select.typeahead, select.tt-query, select.tt-hint, .select2-container--default .select2-selection--single select.select2-search__field, .select2-container--default select.select2-selection--single {
+        color: #000;
+    }
+</style>

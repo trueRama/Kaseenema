@@ -9,6 +9,11 @@ $cover_image = "assets/images/icons/movies.png";
 $sql_get_movie = "SELECT * FROM movies WHERE cover_image != '' order by RAND() LIMIT 1";
 $query_get_movie = mysqli_query($conn, $sql_get_movie);
 $u_check_get_movie = mysqli_num_rows($query_get_movie);
+$movie_section = "?";
+$category_id = 0;
+$steaming_btn_name = "Free to Stream";
+$steaming_link = "free_streaming";
+$steaming = 1;
 if($u_check_get_movie > 0) {
     $move_row = mysqli_fetch_assoc($query_get_movie);
     $movie_name = $move_row['name'];
@@ -16,27 +21,49 @@ if($u_check_get_movie > 0) {
         $cover_image = $move_row['cover_image'];
     }
 }
+if(isset($_GET["stream"])){
+    $streams =$_GET["stream"];
+    if($streams == "free_streaming"){
+        $steaming = 0;
+        $steaming_link = "premium_streaming";
+        $steaming_btn_name = "Premium Stream";
+    }
+}
 if(isset($_GET["type"])){
     $movie_type = $_GET["type"];
     if($movie_type == "series"){
         $active_home = "";
         $active_s = "active";
+        $movie_section = "?type=$movie_type&";
     }
     if($movie_type == "animation_movies"){
         $movie_type = "movies";
         $anime = "AND animetion_status = 1";
         $active_home = "";
         $active_a = "active";
+        $movie_section = "?type=$movie_type&";
     }
     if($movie_type == "animation_series"){
         $movie_type = "series";
         $anime = "AND animetion_status = 1";
         $active_home = "";
         $active_as = "active";
+        $movie_section = "?type=$movie_type&";
     }
 }
 //check if pgs registered
-$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime order by id DESC LIMIT 100";
+$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime AND status = '$steaming' order by id DESC LIMIT 100";
+if(isset($_GET["category"])){
+    $category = $_GET["category"];
+    $sql_cat = "SELECT * FROM categories WHERE category = '$category'";
+    $query_cat = mysqli_query($conn, $sql_cat);
+    $u_check_cat = mysqli_num_rows($query_cat);
+    if($u_check_cat > 0){
+        $row = mysqli_fetch_array($query_cat, MYSQLI_ASSOC);
+        $category_id = $row['id'];
+    }
+    $sql_pgs = "SELECT * FROM movie_categories WHERE category_id = '$category_id' order by id DESC LIMIT 100";
+}
 if(isset($_POST['search'])){
     $search = $_POST['search'];
     $sql_pgs = "SELECT * FROM movies WHERE  name LIKE '%$search%' order by name ASC";
@@ -44,8 +71,10 @@ if(isset($_POST['search'])){
 $query_pgs = mysqli_query($conn, $sql_pgs);
 $u_check_pgs = mysqli_num_rows($query_pgs);
 $number_of_pages = ceil($u_check_pgs/$results_per_page);
-$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime order by id DESC 
-LIMIT $this_page_first_result, $results_per_page";
+$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime AND status = '$steaming' order by id DESC LIMIT $this_page_first_result, $results_per_page";
+if(isset($_GET["category"])){
+    $sql_pgs = "SELECT * FROM movie_categories WHERE category_id = '$category_id' order by id DESC LIMIT $this_page_first_result, $results_per_page";
+}
 if(isset($_POST['search'])){
     $search = $_POST['search'];
     $sql_pgs = "SELECT * FROM movies WHERE  name LIKE '%$search%' order by name ASC 
@@ -133,6 +162,30 @@ if(isset($_POST['search'])){
                             <i class="mdi mdi-movie"></i> Animated Movies</a>
                         <a href="?type=animation_series" class="btn btn-primary btn-sm text-white mb-0 me-0 account" >
                             <i class="mdi mdi-movie"></i> Animated Series</a>
+                        <a href="?stream=<?=$steaming_link?>" class="btn btn-primary btn-sm text-white mb-0 me-0 account" >
+                            <i class="mdi mdi-movie"></i> <?=$steaming_btn_name; ?></a>
+                    </div>
+                </div>
+                <hr/>
+                <h6 class="text-white" style="font-size: 15px">Filter by Category</h6>
+                <div class="d-sm-flex justify-content-between align-items-start">
+                    <div>
+                        <?php
+                            $my_movie_cat_sql = "SELECT * FROM categories order by  category ASC";
+                            $my_movie_cat_query = mysqli_query($conn, $my_movie_cat_sql);
+                            $my_movie_cat_count = mysqli_num_rows($my_movie_cat_query);
+                            if($my_movie_cat_count > 0){
+                                while ($row = mysqli_fetch_array($my_movie_cat_query, MYSQLI_ASSOC)){
+                                    $category_select = $row['category'];
+                        ?>
+                            <a href="<?=$movie_section?>category=<?=$category_select?>"
+                               class="btn btn-primary btn-sm text-white mb-0 me-0 account">
+                                 <?=$category_select?>
+                            </a>
+                        <?php
+                            }
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class=" tab-content-basic">
@@ -141,15 +194,26 @@ if(isset($_POST['search'])){
                         $query_pgs = mysqli_query($conn, $sql_pgs);
                         if($u_check_pgs > 0){
                             while ($row = mysqli_fetch_array($query_pgs, MYSQLI_ASSOC)){
-                                $id = $row['id'];
-                                $movie = $row['name'];
-                                $cover = $row['cover_image'];
                                 $image = "assets/images/favicon.png";
-                                $code = $row['movie_code'];
+                                if(isset($_GET["category"])){
+                                    $code = $row['movie_code'];
+                                    $sql_get_movie = "SELECT * FROM movies WHERE  movie_code = '$code'";
+                                    $query_get_movie = mysqli_query($conn, $sql_get_movie);
+                                    $row_m = mysqli_fetch_array($query_get_movie, MYSQLI_ASSOC);
+                                    $id = $row_m['id'];
+                                    $movie = $row_m['name'];
+                                    $cover = $row_m['cover_image'];
+                                    $description = $row_m['description'];
+                                }else{
+                                    $id = $row['id'];
+                                    $movie = $row['name'];
+                                    $cover = $row['cover_image'];
+                                    $code = $row['movie_code'];
+                                    $description = $row['description'];
+                                }
                                 if($cover != NULL && $cover != ""  && $cover != "url"){
                                     $image = $cover;
                                 }
-                                $description = $row['description'];
                                 ?>
                                     <div class="col-lg-2 col-md-4 col-sm-6 show_movies">
                                         <a href="/detail?movie=<?php echo $code; ?>" class="text-center">

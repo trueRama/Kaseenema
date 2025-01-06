@@ -36,9 +36,6 @@ switch ($uri) {
     case '/animations':
     case "/animations?{$query}":
         $account_type = $_SESSION['account_type'];
-        if($account_type != "admin"){
-            subscriptionCheck($conn);
-        }
         loggedOutCheck();
         include_once ('src/views/dashboard.php');
         break;

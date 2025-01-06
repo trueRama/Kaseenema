@@ -29,5 +29,7 @@ if(isset($_SESSION['username'])){
         $account_user_id = $fetchDetails['id'];
         $account_user_type = $fetchDetails['user_type'];
         $user_access_key = $fetchDetails['access_code'];
+    }else{
+        redirect("Your are required to login to access this content", "/logout");
     }
 }

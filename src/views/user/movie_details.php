@@ -10,6 +10,11 @@ $move_code = filter_input(INPUT_GET, 'movie')??"";
 $episode_url = filter_input(INPUT_POST, 'episode_url')??"";
 $type = "";
 $anime = "";
+$premium = 0;
+$selected_access_one_value = 0;
+$selected_access_two_value = 1;
+$selected_access_one = "Free to Stream";
+$selected_access_two = "Premium Stream";
 //get movie details
 $sql_get_movie = "SELECT * FROM movies WHERE movie_code = '$move_code'";
 $query_get_movie = mysqli_query($conn, $sql_get_movie);
@@ -32,6 +37,18 @@ if($u_check_get_movie > 0){
     }
      $type = $move_row['movie_type'];
      $anime = $move_row['animetion_status'];
+     $premium = $move_row['status'];
+}
+if($premium == 1){
+    $selected_access_one = "Premium Stream";
+    $selected_access_two = "Free to Stream";
+    $selected_access_one_value = 1;
+    $selected_access_two_value = 0;
+}
+if($account_user_type != "admin"){
+    if($premium == 1){
+        subscriptionCheck($conn);
+    }
 }
 // if isset post edit move details
 if(isset($_POST['edit'])){
@@ -100,6 +117,13 @@ if(isset($_POST['edit'])){
       created_at = now() 
     WHERE  movie_code = '$move_code'");
     $messageInsertSQL = mysqli_query($conn, $messageInsertSQL);
+    redirect("Movie Details Updated","/detail?movie=$move_code");
+}
+//Change Movie Access
+if(isset($_POST['movie_access'])){
+    $access_value = filter_input(INPUT_POST, 'movie_access');
+    $messageInsertSQL = ("UPDATE movies Set status = '$access_value' WHERE  movie_code = '$move_code'");
+    mysqli_query($conn, $messageInsertSQL);
     redirect("Movie Details Updated","/detail?movie=$move_code");
 }
 //adding categories to movie

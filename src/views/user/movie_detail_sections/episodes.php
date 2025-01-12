@@ -11,7 +11,7 @@ if($u_check_seasons > 0){
         $season_name = $row_season['season'];
 
 ?>
-        <h5 class="mt-4"><?=$season_name; ?></h5>
+        <h5 class="mt-4"><?=$season_count." ".$season_name; ?></h5>
         <?php if($season_count == 1) { ?>
         <div class="col-lg-2 col-md-3 col-sm-6 mt-2" xmlns="http://www.w3.org/1999/html">
             <div class="d-flex">
@@ -28,7 +28,7 @@ if($u_check_seasons > 0){
 <?php } ?>
 <?php
         //select series Seasons
-        $sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' order by id ASC";
+        $sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' AND season = '$season_name' order by id ASC";
         $query_pgs_movie = mysqli_query($conn, $sql_pgs_movie);
         $u_check_pgs_movie = mysqli_num_rows($query_pgs_movie);
         $has = 0;

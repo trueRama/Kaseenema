@@ -11,7 +11,7 @@ if($u_check_seasons > 0){
         $season_name = $row_season['season'];
 
 ?>
-        <h5 class="mt-4"><?=$season_count." ".$season_name; ?></h5>
+        <h5 class="mt-4"><?=$season_name; ?></h5>
         <?php if($season_count == 1) { ?>
         <div class="col-lg-2 col-md-3 col-sm-6 mt-2" xmlns="http://www.w3.org/1999/html">
             <div class="d-flex">

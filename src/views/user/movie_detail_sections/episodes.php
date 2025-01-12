@@ -11,7 +11,7 @@
     </div>
 </div>
 <?php
-$sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' order by id ASC group by season";
+$sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' order by id ASC";
 $query_pgs_movie = mysqli_query($conn, $sql_pgs_movie);
 $u_check_pgs_movie = mysqli_num_rows($query_pgs_movie);
 

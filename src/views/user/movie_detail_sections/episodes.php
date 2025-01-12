@@ -11,13 +11,15 @@
     </div>
 </div>
 <?php
-$sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' order by id, season ASC";
+$sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' AND season = season order by id, season ASC";
 $query_pgs_movie = mysqli_query($conn, $sql_pgs_movie);
 $u_check_pgs_movie = mysqli_num_rows($query_pgs_movie);
-$has = 2;
+
 if($u_check_pgs_movie > 0){
+    $has = 1;
     while ($row_movie = mysqli_fetch_array($query_pgs_movie, MYSQLI_ASSOC)){
         $has++;
+        $season = $row_movie['season'];
         $id = $row_movie['id'];
         $episode_url = $row_movie['episode_url'];
 ?>

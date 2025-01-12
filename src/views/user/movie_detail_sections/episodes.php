@@ -1,3 +1,20 @@
+<?php
+$season_count = 1;
+$season_name = "";
+//select series Seasons
+$sql_seasons = "SELECT DISTINCT(season) FROM movie_episodes WHERE movie_code = '$move_code' order by season ASC";
+$query_seasons = mysqli_query($conn, $sql_seasons);
+$u_check_seasons = mysqli_num_rows($query_seasons);
+if($u_check_seasons > 0){
+    while ($row_season = mysqli_fetch_array($query_seasons, MYSQLI_ASSOC)){
+//        $season_count++;
+        $season_name = $row_season['season'];
+        echo $season_name;
+    }
+}
+?>
+<h5 class="mt-4"><?=$season_name; ?></h5>
+<?php if($season_count == 1) { ?>
 <div class="col-lg-2 col-md-3 col-sm-6 mt-2" xmlns="http://www.w3.org/1999/html">
     <div class="d-flex">
         <form method="post" action="/detail?movie=<?= $move_code; ?>">
@@ -10,13 +27,17 @@
         </form>
     </div>
 </div>
+<?php } ?>
 <?php
+//select series Seasons
 $sql_pgs_movie = "SELECT * FROM movie_episodes WHERE movie_code = '$move_code' order by id ASC";
 $query_pgs_movie = mysqli_query($conn, $sql_pgs_movie);
 $u_check_pgs_movie = mysqli_num_rows($query_pgs_movie);
-
-if($u_check_pgs_movie > 0){
+$has = 0;
+if($season_count == 1) {
     $has = 1;
+}
+if($u_check_pgs_movie > 0){
     while ($row_movie = mysqli_fetch_array($query_pgs_movie, MYSQLI_ASSOC)){
         $has++;
         $season = $row_movie['season'];

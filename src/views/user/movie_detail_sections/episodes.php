@@ -1,5 +1,5 @@
 <?php
-$season_count = 1;
+$season_count = 0;
 $season_name = "";
 //select series Seasons
 $sql_seasons = "SELECT DISTINCT(season) FROM movie_episodes WHERE movie_code = '$move_code' order by season ASC";

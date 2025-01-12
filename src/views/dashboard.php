@@ -13,7 +13,7 @@ $movie_section = "?";
 $category_id = 0;
 $steaming_btn_name = "Free to Stream";
 $steaming_link = "free_streaming";
-$steaming = 1;
+$steaming = "";
 if($u_check_get_movie > 0) {
     $move_row = mysqli_fetch_assoc($query_get_movie);
     $movie_name = $move_row['name'];
@@ -22,7 +22,7 @@ if($u_check_get_movie > 0) {
     }
 }
 if(isset($_GET["stream"])){
-    $streams =$_GET["stream"];
+    $streams = "AND status = ".$_GET["stream"];
     if($streams == "free_streaming"){
         $steaming = 0;
         $steaming_link = "premium_streaming";
@@ -32,6 +32,7 @@ if(isset($_GET["stream"])){
 if(isset($_GET["type"])){
     $movie_type = $_GET["type"];
     if($movie_type == "series"){
+        $movie_type = "series";
         $active_home = "";
         $active_s = "active";
         $movie_section = "?type=$movie_type&";
@@ -52,7 +53,7 @@ if(isset($_GET["type"])){
     }
 }
 //check if pgs registered
-$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime AND status = '$steaming' order by id DESC LIMIT 100";
+$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime $steaming order by id DESC LIMIT 100";
 if(isset($_GET["category"])){
     $category = $_GET["category"];
     $sql_cat = "SELECT * FROM categories WHERE category = '$category'";
@@ -71,7 +72,7 @@ if(isset($_POST['search'])){
 $query_pgs = mysqli_query($conn, $sql_pgs);
 $u_check_pgs = mysqli_num_rows($query_pgs);
 $number_of_pages = ceil($u_check_pgs/$results_per_page);
-$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime AND status = '$steaming' order by id DESC LIMIT $this_page_first_result, $results_per_page";
+$sql_pgs = "SELECT * FROM movies WHERE movie_type = '$movie_type' $anime $steaming order by id DESC LIMIT $this_page_first_result, $results_per_page";
 if(isset($_GET["category"])){
     $sql_pgs = "SELECT * FROM movie_categories WHERE category_id = '$category_id' order by id DESC LIMIT $this_page_first_result, $results_per_page";
 }

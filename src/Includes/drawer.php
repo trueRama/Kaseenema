@@ -26,40 +26,9 @@ if ($account_user_cord != "0000") {
                 <span class="menu-title">Manage Studio</span>
             </a>
         </li>
-        <li class="nav-item <?php echo $vpy_in; ?>">
-            <a class="nav-link" href="/payments_approved">
-                <i class="dropdown-item-icon me-2">
-                    <img src="assets/images/Icons/approved.png" class="icons" alt="">
-                </i>
-                <span class="menu-title">Verified Payments</span>
-            </a>
-        </li>
-<!--        <li class="nav-item --><?php //echo $ppy_in; ?><!--">-->
-<!--            <a class="nav-link" href="/pending">-->
-<!--                <i class="dropdown-item-icon me-2">-->
-<!--                    <img src="assets/images/Icons/pending.jpg" class="icons" alt="">-->
-<!--                </i>-->
-<!--                <span class="menu-title">Pending Payments</span>-->
-<!--            </a>-->
-<!--        </li>-->
-        <li class="nav-item <?php echo $fpy_in; ?>">
-            <a class="nav-link" href="/payments_field">
-                <i class="dropdown-item-icon me-2">
-                    <img src="assets/images/Icons/rejected.jpg" class="icons" alt="">
-                </i>
-                <span class="menu-title">Failed Payments</span>
-            </a>
-        </li>
         <?php }
+        //Ordinary Account
         if($account_user_type == "ordinary"){ ?>
-        <li class="nav-item <?php echo $wallet_in; ?>">
-            <a class="nav-link" href="/wallet">
-                <i class="dropdown-item-icon me-2">
-                    <img src="assets/images/Icons/wallet.png" class="icons" alt="">
-                </i>
-                <span class="menu-title">My Wallet</span>
-            </a>
-        </li>
         <li class="nav-item <?php echo $movie_in; ?>">
             <a class="nav-link" href="/movies?type=movies">
                 <i class="dropdown-item-icon me-2">
@@ -85,8 +54,24 @@ if ($account_user_cord != "0000") {
             </a>
         </li>
         <?php } ?>
+        <li class="nav-item <?php echo $vpy_in; ?>">
+            <a class="nav-link" href="/payments_approved">
+                <i class="dropdown-item-icon me-2">
+                    <img src="assets/images/Icons/approved.png" class="icons" alt="">
+                </i>
+                <span class="menu-title">Verified Payments</span>
+            </a>
+        </li>
+        <li class="nav-item <?php echo $fpy_in; ?>">
+            <a class="nav-link" href="/payments_field">
+                <i class="dropdown-item-icon me-2">
+                    <img src="assets/images/Icons/rejected.jpg" class="icons" alt="">
+                </i>
+                <span class="menu-title">Failed Payments</span>
+            </a>
+        </li>
         <li class="nav-item <?php echo $help_in; ?>">
-            <a class="nav-link" href="/help">
+            <a class="nav-link" href="https://kaseenema.com/about-us/">
                 <i class="dropdown-item-icon me-2">
                     <img src="assets/images/Icons/help.gif" class="icons" alt="">
                 </i>
